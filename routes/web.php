@@ -25,8 +25,21 @@ Route::get('/post', function () {
     ]);
 });
 
+Route::get('/about', function () {
+    return view('home.about', [
+        'tittle' => "About",
+        'name' => "Muhammad Ruhiyat",
+        'email' => "muhammadruhiyat020998@gmail.com",
+        'img' => "/img/photo_2022-08-01_13-12-07.jpg"
+    ]);
+});
+
 Route::get('/category', function () {
     return view('category.index', [
         'tittle' => "Halaman Category"
     ]);
+});
+
+Route::get('/login', function () {
+    return view('login.index');
 });

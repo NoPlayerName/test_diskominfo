@@ -27,10 +27,13 @@
           <li class="nav-item">
             <a class="nav-link  {{ Request::is('category') ? 'active' : '' }}" href="/category">Category</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link  {{ Request::is('about') ? 'active' : '' }}" href="/about">About</a>
+          </li>
         </ul>
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link ms-auto" href="/Login">
+            <a class="nav-link ms-auto" href="/login">
              <span data-feather="log-in"></span> Login</a>
           </li>
         </ul>
