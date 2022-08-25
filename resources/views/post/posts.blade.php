@@ -4,9 +4,9 @@
 
 <article class="mb-5">
 
-<h1> {{ $post["tittle"] }} </h1>
-<h5>{{ $post["author"] }}</h5>
-<p>{{ $post["body"] }}</p>
+<h1> {{ $post->tittle }} </h1>
+<h5>{{ $post->author }}</h5>
+{!! $post->body !!}
 
 </article>
 

@@ -6,10 +6,10 @@
 <article class="mb-5">
 
     <h1>
-    <a href="/posts/{{ $pos['slug'] }}" class="text-decoration-none">{{ $pos['tittle']}}</a>
+    <a href="/posts/{{ $pos->slug }}" class="text-decoration-none">{{ $pos->tittle}}</a>
     </h1>
-    <h5>by: {{ $pos['author'] }}</h5>
-    <p>{{ $pos['body'] }}</p>
+    <h5>by: {{ $pos->author }}</h5>
+    <p>{{ $pos->excerpt }}</p>
 
 </article>
 @endforeach
