@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,9 +30,21 @@ Route::get('/posts/{post:slug}', [PostController::class, 'posts']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/category', function () {
+Route::get('/categories', function () {
     return view('category.index', [
-        'tittle' => "Halaman Category"
+        'tittle' => "category",
+        'category' => Category::all()
+
+
+    ]);
+});
+
+Route::get('/categories/{category:slug}', function (Category $category) {
+    return view('category.categories', [
+        'tittle' => $category->name,
+        'post' => $category->post,
+        'category' => $category->name
+
     ]);
 });
 
