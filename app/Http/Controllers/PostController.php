@@ -18,20 +18,12 @@ class PostController extends Controller
     }
 
 
-    public function posts($slug)
+    public function posts(Post $post)
     {
-
-        // $new = [];
-
-        // foreach ($data as $pos) {
-        //     if ($pos["slug"] == $slug) {
-        //         $new = $pos;
-        //     }
-        // }
 
         return view('post.posts', [
             'tittle' => "Halaman Post Utama",
-            'post' => Post::find($slug)
+            'post' => $post
         ]);
     }
 }
