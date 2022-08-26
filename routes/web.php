@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
+use App\Models\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,4 +51,11 @@ Route::get('/categories/{category:slug}', function (Category $category) {
 
 Route::get('/login', function () {
     return view('login.index');
+});
+
+Route::get('/author/{user}', function (User $user) {
+    return view('post.index', [
+        'tittle' => "Author",
+        'post' => $user->post
+    ]);
 });
