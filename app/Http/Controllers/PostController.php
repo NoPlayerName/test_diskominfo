@@ -13,7 +13,7 @@ class PostController extends Controller
 
         return view('post.index', [
             'tittle' => "Halaman Post",
-            'post' => Post::all()
+            'post' => Post::latest()->get()
         ]);
     }
 
