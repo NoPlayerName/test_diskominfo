@@ -18,18 +18,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        User::factory(5)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
-            'name' => 'Muhammad Ruhiyat',
-            'email' => 'muhammadruhiyat@gmail.com',
-            'password' => bcrypt('12345')
-        ]);
+        // User::create([
+        //     'name' => 'Muhammad Ruhiyat',
+        //     'email' => 'muhammadruhiyat@gmail.com',
+        //     'password' => bcrypt('12345')
+        // ]);
 
         Category::create([
             'name' => 'Web Programming',
@@ -46,13 +46,15 @@ class DatabaseSeeder extends Seeder
             'slug' => 'personal'
         ]);
 
-        Post::create([
-            'tittle' => 'Judul Permata',
-            'slug' => 'judul-pertama',
-            'excerpt' => ' ',
-            'body' => ' ',
-            'category_id' => '1',
-            'user_id' => '1'
-        ]);
+        Post::factory(20)->create();
+
+        // Post::create([
+        //     'tittle' => 'Judul Permata',
+        //     'slug' => 'judul-pertama',
+        //     'excerpt' => ' ',
+        //     'body' => ' ',
+        //     'category_id' => '1',
+        //     'user_id' => '1'
+        // ]);
     }
 }
