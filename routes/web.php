@@ -43,6 +43,6 @@ Route::get('/login', function () {
 Route::get('/author/{author:username}', function (User $author) {
     return view('post.index', [
         'tittle' => "Post By Author : $author->name",
-        'post' => $author->post
+        'post' => $author->post->load('category', 'author')
     ]);
 });
