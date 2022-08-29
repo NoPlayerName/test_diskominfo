@@ -9,8 +9,6 @@ class PostController extends Controller
 {
     public function index()
     {
-
-
         return view('post.index', [
             'tittle' => "Halaman Post",
             'post' => Post::latest()->get()
