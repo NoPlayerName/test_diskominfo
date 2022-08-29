@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\User;
@@ -31,31 +32,17 @@ Route::get('/posts/{post:slug}', [PostController::class, 'posts']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::get('/categories', function () {
-    return view('category.index', [
-        'tittle' => "category",
-        'category' => Category::all()
+Route::get('/categories', [CategoryController::class, 'index']);
 
-
-    ]);
-});
-
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('category.categories', [
-        'tittle' => $category->name,
-        'post' => $category->post,
-        'category' => $category->name
-
-    ]);
-});
+Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
 Route::get('/login', function () {
     return view('login.index');
 });
 
-Route::get('/author/{user}', function (User $user) {
+Route::get('/author/{author:username}', function (User $author) {
     return view('post.index', [
         'tittle' => "Author",
-        'post' => $user->post
+        'post' => $author->post
     ]);
 });
