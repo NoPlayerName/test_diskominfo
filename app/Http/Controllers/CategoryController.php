@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {
         return view('post.index', [
             'tittle' => "Post by : $category->name",
-            'post' => $category->post,
+            'post' => $category->post->load('category', 'author')
 
 
         ]);
