@@ -15,7 +15,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('category.index', [
+            'tittle' => "category",
+            'category' => Category::all()
+
+
+        ]);
     }
 
     /**
@@ -82,5 +87,15 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+    }
+
+    public function category(Category $category)
+    {
+        return view('post.index', [
+            'tittle' => $category->name,
+            'post' => $category->post,
+            'category' => $category->name
+
+        ]);
     }
 }
