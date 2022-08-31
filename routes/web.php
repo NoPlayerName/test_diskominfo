@@ -34,15 +34,15 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
-Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
+// Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
 Route::get('/login', function () {
     return view('login.index');
 });
 
-Route::get('/author/{author:username}', function (User $author) {
-    return view('post.index', [
-        'tittle' => "Post By Author : $author->name",
-        'post' => $author->post->load('category', 'author')
-    ]);
-});
+// Route::get('/author/{author:username}', function (User $author) {
+//     return view('post.index', [
+//         'tittle' => "Post By Author : $author->name",
+//         'post' => $author->post->load('category', 'author')
+//     ]);
+// });
