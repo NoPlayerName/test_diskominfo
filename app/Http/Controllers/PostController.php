@@ -9,9 +9,11 @@ class PostController extends Controller
 {
     public function index()
     {
+
+        // dd(request('search'));
         return view('post.index', [
             'tittle' => "Halaman Post",
-            'post' => Post::latest()->get()
+            'post' => Post::latest()->search(request(['search', 'category']))->get()
         ]);
     }
 
