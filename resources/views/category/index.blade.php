@@ -9,7 +9,7 @@
     <div class="row">
         @foreach ($category as $cat)
         <div class="col-md-4">
-            <a href="/categories/{{ $cat->slug }}" class="text-decoration-none">
+            <a href="/post?category={{ $cat->slug }}" class="text-decoration-none">
             <div class="card text-bg-dark">
                 <img src="https://source.unsplash.com/500x400?{{ $cat->name }}" class="card-img" alt="...">
                 <div class="card-img-overlay d-flex align-items-center p-0">
