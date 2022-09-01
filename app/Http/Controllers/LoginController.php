@@ -12,4 +12,17 @@ class LoginController extends Controller
         'tittle' => 'Login'
     ]);
    }
+
+   public function login(Request $request)
+   {
+    $request->validate([
+
+        'email' => 'required|email:dns',
+        'password' => 'required'
+        // 'email' => $_POST['email'],
+        // 'password' => $_POST['password']
+    ]);
+
+   dd('berhasil login');
+   }
 }
