@@ -23,7 +23,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <a class="nav-link ms-auto" href="/login">
-             <span data-feather="log-in"></span> Login</a>
+              <i class="bi bi-box-arrow-in-right"></i> Login</a>
           </li>
         </ul>
       </div>
