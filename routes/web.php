@@ -36,10 +36,13 @@ Route::get('/about', [AboutController::class, 'index']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
 
-// Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::post('/register', [RegisterController::class, 'store']);
+
+// Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
 // Route::get('/author/{author:username}', function (User $author) {
 //     return view('post.index', [
