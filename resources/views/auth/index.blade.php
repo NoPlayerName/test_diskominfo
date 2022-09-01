@@ -5,14 +5,25 @@
   <div class="col-md-5">
   <main class="form-signin ">
     <h1 class="h3 mb-3 fw-normal text-center">Please login</h1>
-    <form>
+    <form action="/login" method="POST">
+      @csrf
       <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
         <label for="floatingInput">Email address</label>
+        <div class="invalid-feedback">
+          @error('record')
+              {{ $message }}
+          @enderror
+        </div>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
         <label for="floatingPassword">Password</label>
+        <div class="invalid-feedback">
+          @error('record')
+              {{ $message }}
+          @enderror
+        </div>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
     </form>
