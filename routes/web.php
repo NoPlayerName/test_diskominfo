@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RegisterController;
 use App\Models\Category;
 use App\Models\User;
 
@@ -36,9 +38,8 @@ Route::get('/categories', [CategoryController::class, 'index']);
 
 // Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
-Route::get('/login', function () {
-    return view('login.index');
-});
+Route::get('/login', [LoginController::class, 'index']);
+Route::get('/register', [RegisterController::class, 'index']);
 
 // Route::get('/author/{author:username}', function (User $author) {
 //     return view('post.index', [
