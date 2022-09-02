@@ -5,9 +5,15 @@
   <div class="col-md-4">
 
     @if (session()->has('success'))     
-    <div class="alert alert-success alert-dismissble fade show" role="alert">
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
       {{ session('success') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+    @if (session()->has('loginerror'))     
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      {{ session('loginerror') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif
   
@@ -16,19 +22,19 @@
     <form action="/login" method="POST">
       @csrf
       <div class="form-floating">
-        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}">
+        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" autofocus required>
         <label for="floatingInput">Email address</label>
         <div class="invalid-feedback">
-          @error('record')
+          @error('email')
               {{ $message }}
           @enderror
         </div>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
+        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password" required>
         <label for="floatingPassword">Password</label>
         <div class="invalid-feedback">
-          @error('record')
+          @error('password')
               {{ $message }}
           @enderror
         </div>
