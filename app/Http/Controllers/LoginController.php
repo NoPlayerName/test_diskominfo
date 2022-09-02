@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
@@ -15,14 +16,18 @@ class LoginController extends Controller
 
    public function login(Request $request)
    {
-    $request->validate([
+   $dataValidate = $request->validate([
 
         'email' => 'required|email:dns',
         'password' => 'required'
-        // 'email' => $_POST['email'],
-        // 'password' => $_POST['password']
     ]);
 
-   dd('berhasil login');
+    if (Auth::attempt($dataValidate)) {
+        $request->session()->regenerate();
+        return redirect()->intended('/dashboard')->with('succes', 'Login Berhasil!!');
+    }
+
+    return back()->with('loginerror', 'Login Failed!!') ;
+//    dd('berhasil login');
    }
 }
