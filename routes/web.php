@@ -1,13 +1,14 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\RegisterController;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Category;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,16 +28,17 @@ Route::get('/', function () {
 });
 
 
-
+// Rout main 
 Route::get('/post', [PostController::class, 'index']);
-
 Route::get('/posts/{post:slug}', [PostController::class, 'posts']);
-
 Route::get('/about', [AboutController::class, 'index']);
-
 Route::get('/categories', [CategoryController::class, 'index']);
 
+// Rout dashboard 
 
+Route::get('/dashboard', [DashboardController::class, 'index']);
+
+// Route Auth 
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/login', [LoginController::class, 'login']);
