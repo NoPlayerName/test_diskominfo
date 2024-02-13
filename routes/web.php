@@ -9,6 +9,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SampleController;
+use App\Http\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,28 +23,35 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index', [
-        'tittle' => "Home Page"
-    ]);
-});
+// Route Auth 
+Route::get('/', [LoginController::class, 'index'])->middleware('guest');
 
+
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+
+Route::get('/logout', [LoginController::class, 'logout']);
+
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'store']);
 
 // Rout main 
-Route::get('/post', [PostController::class, 'index']);
-Route::get('/posts/{post:slug}', [PostController::class, 'posts']);
-Route::get('/about', [AboutController::class, 'index']);
-Route::get('/categories', [CategoryController::class, 'index']);
+// Route::get('/post', [PostController::class, 'index']);
+// Route::get('/posts/{post:slug}', [PostController::class, 'posts']);
+// Route::get('/about', [AboutController::class, 'index']);
+// Route::get('/categories', [CategoryController::class, 'index']);
 
 // Rout dashboard 
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/new_sample', [DashboardController::class, 'new_sample'])->middleware('auth');
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
+// Route sample
+Route::get('/dashboard/add_sample', [DashboardController::class, 'data_sample' ])->middleware('auth');
+Route::post('/add_sample', [SampleController::class, 'store'])->middleware('auth');
 
-// Route Auth 
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/login', [LoginController::class, 'login']);
-Route::post('/register', [RegisterController::class, 'store']);
+    
+
+
+
 
 // Route::get('/categories/{category:slug}', [CategoryController::class, 'category']);
 
